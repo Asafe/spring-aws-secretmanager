@@ -1,1 +1,1 @@
-# spring-aws-secretmanager
+# springboot-aws-secretmanager
