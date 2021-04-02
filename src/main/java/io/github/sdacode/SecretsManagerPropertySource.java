@@ -1,12 +1,12 @@
-package org.github.springboot.aws;
+package io.github.sdacode;
 
-import org.slf4j.LoggerFactory;
+import io.github.sdacode.exception.SecretsManagerPropertyNotFoundException;
 import org.springframework.core.env.PropertySource;
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
-import software.amazon.awssdk.services.secretsmanager.model.SecretsManagerException;
+import software.amazon.awssdk.services.secretsmanager.model.ResourceNotFoundException;
 
-import static org.github.springboot.aws.SecretsManagerProperties.getRegion;
+import static io.github.sdacode.SecretsManagerProperties.getRegion;
 
 public class SecretsManagerPropertySource extends PropertySource.StubPropertySource {
 
@@ -24,10 +24,10 @@ public class SecretsManagerPropertySource extends PropertySource.StubPropertySou
         try (var client = SecretsManagerClient.builder().region(getRegion()).build()) {
             var request = GetSecretValueRequest.builder().secretId(name).build();
             return client.getSecretValue(request).secretString();
-        } catch (SecretsManagerException e) {
-            LoggerFactory.getLogger(getClass()).error(e.getMessage(), e);
-            return null;
+        } catch (ResourceNotFoundException e) {
+            throw new SecretsManagerPropertyNotFoundException(property, e);
         }
+
     }
 
 }

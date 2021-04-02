@@ -1,4 +1,4 @@
-package org.github.springboot.aws;
+package io.github.sdacode;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;

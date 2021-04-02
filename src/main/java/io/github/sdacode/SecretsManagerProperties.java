@@ -1,4 +1,4 @@
-package org.github.springboot.aws;
+package io.github.sdacode;
 
 import java.util.*;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -6,8 +6,8 @@ import software.amazon.awssdk.regions.Region;
 
 public class SecretsManagerProperties {
 
-    private static final String ENABLE = "secrets.manager.enable";
-    private static final String REGION = "secrets.manager.region";
+    private static final String ENABLE = "aws.secretsmanager.enable";
+    private static final String REGION = "aws.secretsmanager.region";
     private static final Map<String, Object> properties;
 
     private SecretsManagerProperties() {
@@ -31,7 +31,7 @@ public class SecretsManagerProperties {
      * @param environment
      */
 
-    public static void read(ConfigurableEnvironment environment) {
+    static void read(ConfigurableEnvironment environment) {
         Set<String> keys = new HashSet<>(properties.keySet());
         keys.forEach(key -> {
             if (environment.containsProperty(key) && Objects.nonNull(environment.getProperty(key)))
