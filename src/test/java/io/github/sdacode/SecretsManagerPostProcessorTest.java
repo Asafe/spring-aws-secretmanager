@@ -11,7 +11,7 @@ public class SecretsManagerPostProcessorTest {
     @Test
     public void testSecretsManagerDisable() {
         var env = new MockEnvironment();
-        env.setProperty("aws.secretsmanager.enable", Boolean.FALSE.toString());
+        env.setProperty("aws.secretsmanager.enable", "false");
         var sizePropertySourcesExpected = env.getPropertySources().size();
         var processor = new SecretsManagerPostProcessor();
         processor.postProcessEnvironment(env, null);
@@ -21,7 +21,7 @@ public class SecretsManagerPostProcessorTest {
     @Test
     public void testSecretsManagerEnable() {
         var env = new MockEnvironment();
-        env.setProperty("aws.secretsmanager.enable", Boolean.TRUE.toString());
+        env.setProperty("aws.secretsmanager.enable", "true");
         var sizePropertySourcesExpected = env.getPropertySources().size() + 1;
         var processor = new SecretsManagerPostProcessor();
         processor.postProcessEnvironment(env, null);
