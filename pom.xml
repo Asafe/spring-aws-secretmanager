@@ -5,7 +5,7 @@
 
     <groupId>io.github.sdacode</groupId>
     <artifactId>springboot-aws-secretsmanager</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>springboot-aws-secretsmanager</name>
     <description>Component for loading AWS SecretsManager parameters in the spring-boot application and
@@ -44,14 +44,9 @@
             <version>2.4.4</version>
         </dependency>
         <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>secretsmanager</artifactId>
-            <version>2.16.25</version>
-        </dependency>
-        <dependency>
             <groupId>com.amazonaws</groupId>
-            <artifactId>aws-xray-recorder-sdk-aws-sdk-v2</artifactId>
-            <version>2.8.0</version>
+            <artifactId>aws-java-sdk-secretsmanager</artifactId>
+            <version>1.11.993</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
